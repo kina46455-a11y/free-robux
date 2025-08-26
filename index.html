@@ -1,125 +1,112 @@
-/* Palette sombre façon Roblox + accent Robux vert */
-:root{
-  --bg:#0f1114; --panel:#1a1c20; --panel-2:#191b1f;
-  --line:#2a2d33; --text:#e5e7eb; --muted:#9aa3af;
-  --robux:#1ccf5f; --robux-2:#16a34a; --hover:#22252b;
-  --ring:0 0 0 2px rgba(28,207,95,.28);
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox Style Codes (Éducatif)</title>
+  <!-- Lien vers ton CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Barre de navigation style Roblox -->
+  <header class="rbx-topbar">
+    <div class="rbx-brand">
+      <span class="rbx-glyph"></span>
+      <span class="rbx-word">Roblox-Style</span>
+    </div>
+    <nav class="rbx-nav">
+      <a class="rbx-link is-active" href="#codes">Codes</a>
+      <a class="rbx-link" href="#params">Découvrir</a>
+      <a class="rbx-link" href="#aide">Aide</a>
+    </nav>
+  </header>
 
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0; background:var(--bg); color:var(--text);
-  font:500 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
-}
+  <!-- Contenu principal -->
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Générateur de <span class="robux">faux codes</span></h1>
+        <p>Ces codes sont <strong>fictifs</strong> et servent uniquement à apprendre HTML, CSS et JavaScript.</p>
+      </div>
+      <div class="hero-card">
+        <div class="robux-coin">R$</div>
+      </div>
+    </section>
 
-/* Topbar */
-.rbx-topbar{
-  position:sticky; top:0; z-index:10;
-  background:#0b0d10; border-bottom:1px solid var(--line);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 18px;
-}
-.rbx-brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
-.rbx-glyph{
-  width:22px;height:22px;display:inline-block;position:relative;
-  background:#fff; transform:rotate(15deg); /* diamant stylisé */
-  border-radius:2px;
-}
-.rbx-glyph::after{
-  content:""; position:absolute; inset:4px; background:#0b0d10; border-radius:1px;
-}
-.rbx-word{color:#fff; opacity:.9}
-.rbx-nav{display:flex;gap:14px}
-.rbx-link{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:8px}
-.rbx-link:hover{background:var(--hover); color:#fff}
-.rbx-link.is-active{color:#fff; background:var(--hover)}
+    <section class="grid">
+      <!-- Bloc des codes générés -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Codes générés</h2>
+          <span class="badge">Éducatif</span>
+        </div>
+        <div id="codes" class="codes"></div>
 
-/* Layout */
-.wrap{max-width:1100px; margin:28px auto; padding:0 16px}
-.hero{
-  display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:stretch; margin-bottom:18px;
-}
-@media (max-width:920px){ .hero{grid-template-columns:1fr} }
-.hero-text{
-  background:linear-gradient(180deg,var(--panel),var(--panel-2));
-  border:1px solid var(--line); border-radius:16px; padding:18px;
-}
-.hero-text h1{margin:0 0 6px 0; font-size:28px}
-.robux{color:var(--robux)}
-.hero-card{
-  background:radial-gradient(600px 200px at 80% -20%,rgba(28,207,95,.12),transparent),
-             linear-gradient(180deg,var(--panel),var(--panel-2));
-  border:1px solid var(--line); border-radius:16px; display:grid; place-items:center; min-height:140px;
-}
-.robux-coin{
-  width:84px;height:84px;border-radius:50%;
-  background:conic-gradient(from 0deg,#2be57a, #22c55e, #16a34a, #22c55e, #2be57a);
-  display:grid;place-items:center;font-weight:900;color:#092a14;border:4px solid #0c1b12;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
-}
+        <div class="tools">
+          <button id="btn-generate" class="btn primary">Générer</button>
+          <button id="btn-copy" class="btn">Copier</button>
+          <button id="btn-download" class="btn">Télécharger .txt</button>
+          <button id="btn-clear" class="btn subtle">Vider</button>
+          <span id="status" class="status">Prêt.</span>
+        </div>
 
-.grid{display:grid; grid-template-columns:1fr 1fr; gap:18px}
-@media (max-width:980px){ .grid{grid-template-columns:1fr} }
+        <div class="progress">
+          <div id="bar" class="bar"></div>
+        </div>
 
-.panel{
-  background:linear-gradient(180deg,var(--panel),var(--panel-2));
-  border:1px solid var(--line); border-radius:16px; padding:16px;
-}
-.panel-head{display:flex; align-items:center; gap:10px; margin-bottom:8px}
-.panel-head h2{margin:0;font-size:18px}
-.badge{margin-left:auto; font-size:12px; color:#072214; background:linear-gradient(90deg,#5bf592,#a7ffcc); padding:4px 8px; border-radius:999px; font-weight:800}
+        <div class="callout">
+          ⚠️ <strong>Note :</strong> ces codes sont inventés, ils ne fonctionnent nulle part.  
+          Le projet est uniquement <em>pédagogique</em>.
+        </div>
+      </div>
 
-.codes{
-  height:330px; overflow:auto; padding:10px; border:1px dashed #2e343c; border-radius:12px;
-  background:#0f1419;
-}
-.code{
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  padding:9px 10px; margin:6px 0; border-radius:10px;
-  border:1px solid var(--line); background:#12161b;
-}
-.code strong{font-family:ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; font-size:15px}
-.pill{font-size:11px; padding:2px 8px; border-radius:999px; border:1px solid #334155; color:#98a6b5}
+      <!-- Bloc paramètres -->
+      <div id="params" class="panel">
+        <div class="panel-head">
+          <h2>Paramètres</h2>
+        </div>
 
-.tools{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
-.btn{
-  appearance:none; cursor:pointer; border-radius:10px;
-  background:#171a1f; border:1px solid #2e343c; color:#e5e7eb; padding:10px 14px; font-weight:700;
-}
-.btn:hover{background:#1e2228}
-.btn.primary{background:linear-gradient(90deg,var(--robux),var(--robux-2)); color:#06170e; border-color:transparent}
-.btn.subtle{background:transparent}
+        <div class="form-row">
+          <label for="count">Nombre de codes</label>
+          <input id="count" type="number" min="1" max="100" value="10">
+        </div>
 
-.status{font-size:12px; color:var(--muted); align-self:center}
+        <div class="form-row">
+          <label for="pattern">Format</label>
+          <select id="pattern">
+            <option value="RBLX-XXXX-XXXX-XXXX">RBLX-XXXX-XXXX-XXXX</option>
+            <option value="RBX-XXXXX-XXXXX-XXXXX">RBX-XXXXX-XXXXX-XXXXX</option>
+            <option value="XXXX-XXXX-XXXX">XXXX-XXXX-XXXX</option>
+          </select>
+        </div>
 
-.progress{height:8px; background:#0e1116; border:1px solid #27303a; border-radius:999px; overflow:hidden; margin-top:10px}
-.bar{height:100%; width:0; background:linear-gradient(90deg,var(--robux),var(--robux-2)); transition:width .35s ease}
+        <div class="panel-sep"></div>
 
-.callout{
-  margin-top:12px; padding:12px; border:1px solid rgba(28,207,95,.35);
-  background:rgba(28,207,95,.08); border-radius:10px; color:#c8ffdf;
-}
+        <div class="form-row">
+          <label for="sim-in">Tester un code (simulation)</label>
+          <div class="redeem">
+            <input id="sim-in" type="text" placeholder="Entre un code ici…">
+            <button id="btn-redeem" class="btn primary">Redeem</button>
+          </div>
+          <p id="sim-out" class="redeem-msg">—</p>
+        </div>
 
-.form-row{display:grid; gap:6px; margin:10px 0}
-input[type="number"], input[type="text"], select{
-  width:100%; padding:10px 12px; border-radius:10px;
-  border:1px solid #2e343c; background:#0f1419; color:#e5e7eb; outline:none;
-}
-input:focus, select:focus{box-shadow:var(--ring); border-color:transparent}
+        <ul class="tips">
+          <li>✔️ Manipuler le DOM avec <code>JavaScript</code></li>
+          <li>✔️ Copier du texte avec l’API Clipboard</li>
+          <li>✔️ Télécharger des fichiers avec <code>Blob()</code></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-.redeem{display:flex; gap:8px}
-.redeem input{flex:1}
-.redeem-msg{margin:.2rem 0 0 0; color:var(--muted)}
-.redeem-msg.ok{color:var(--robux)}
-.redeem-msg.err{color:#ef4444}
+  <!-- Footer -->
+  <footer id="aide" class="footer">
+    <p>Interface inspirée de l’esthétique Roblox.  
+    <strong>Non affilié</strong>. Usage éducatif uniquement.</p>
+  </footer>
 
-.panel-sep{height:1px;background:var(--line);margin:12px 0}
-
-.tips{margin:12px 0 0 0; padding:0; list-style:none; display:grid; gap:8px}
-.tips li{background:#12161b; border:1px solid var(--line); border-radius:10px; padding:8px 10px}
-
-.footer{
-  border-top:1px solid var(--line); color:var(--muted);
-  padding:14px 16px; text-align:center; margin-top:24px;
-}
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
